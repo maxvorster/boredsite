@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bored Site</title>
+    <script>
+        fetch("sites.txt")
+            .then(response => response.text())
+            .then(text => {
+                const sites = text
+                    .split("\n")
+                    .map(line => line.trim())
+                    .filter(line => line.length > 0);
+
+                const randomSite = sites[Math.floor(Math.random() * sites.length)];
+                window.location.replace(randomSite);
+            })
+            .catch(err => {
+                console.error("Failed to load sites.txt", err);
+            });
+    </script>
+</head>
+<body>
+</body>
+</html>
